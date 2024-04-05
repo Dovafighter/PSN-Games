@@ -4,8 +4,7 @@ import re
 def create_links(games):
     links = []
     for game in games:
-        game = game.replace('PS4', '').replace('PS5','').replace("&","").replace(':','').lower()
-        game = re.sub('(®)', '', game)
+        game = game.replace('–', '-').replace(' - ', '-').replace(' ', '-').replace('PS4', '').replace('PS5','').replace("&","").replace(':','').lower()
         game = re.sub('(?!.{20})\.', '', game)
         link = f"https://www.metacritic.com/game/{game}/"
         links.append(link)
