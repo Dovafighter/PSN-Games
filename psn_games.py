@@ -11,6 +11,3 @@ def get_games():
 
     games_list = [game.text for game in games_html]
     return(games_list)
-
-games = get_games()
-print(games)
