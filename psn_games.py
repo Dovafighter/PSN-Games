@@ -9,5 +9,8 @@ def get_games():
     soup = BeautifulSoup(page.content, 'html.parser')
     games_html = soup.find_all('a', attrs={'module-name': 'PS Plus Games List'})
 
-    games_list = [game.text for game in games_html]
+    games_list = [game.text.lower() for game in games_html]
+    games_list = sorted(set(games_list))
     return(games_list)
+
+print(get_games())
