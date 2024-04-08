@@ -22,6 +22,7 @@ def create_names(games):
         elif game == 'alternate-jake-hunter-daedalus-the-awakening-of-golden-jazz':
             names.append('alternate-jake-hunter-daedalus-the-awakening-of')
             continue
+        
         else:
             names.append(game)
     return(sorted(names))

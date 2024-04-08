@@ -15,6 +15,10 @@ def get_info(names):
         score = re.search('((?<=score".)..)', info.text)
         game_score = score.group(1)
 
+        # Looking for the game's review count
+        reviews = re.search('(?<="reviewCount":)(.*?),', info.text)
+        game_reviews = reviews.group(1)
+
         # Looking for the game's name using Regex
         name = re.search('"title":"(.*?)",', info.text)
         game_name = name.group(1)
@@ -31,6 +35,6 @@ def get_info(names):
         publisher = re.search('"typeName":"Publisher","name":"(.*?)",', info.text)
         game_publisher = publisher.group(1)
 
-        print(game_name, game_score, game_release, game_developer, game_publisher, '\n')
+        print(game_name, game_score, game_reviews, game_release, game_developer, game_publisher, '\n')
 
 information = get_info(create_names(get_games()))
