@@ -45,8 +45,11 @@ def get_games():
                   .replace('-and-ps5', '')
                   .replace('-playstation4','')
                   .replace('™ ', '-')
+                  .replace('™', '-')
                   .replace(' (playstation plus)' ,'')
-                  .replace('+', 'plus') for game in games_html]
+                  .replace('+', 'plus')
+                  .replace('vs.', 'vs')
+                  .replace('...', '') for game in games_html]
     games_list = sorted(set(games_list))
     return(games_list)
 

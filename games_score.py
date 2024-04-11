@@ -11,8 +11,8 @@ def create_names(games):
         # game = game.replace(' - ', '-').replace(' – ', '-').replace(' (ps4™)', '').replace(' ps4  ps5', '').replace('(cusa07377)', '').replace('-ps5  ps4', '').replace('/', '-').replace('-ps4', '').replace('-playstatin4 edition', '').replace(' for ps4', '').replace('ps4  ps5', '').replace(' ps4 ps5' ,'').replace(' (ps5)', '').replace(' playstation4 edition', '').replace('ps4','').replace(' ( ps5)', '').replace('  ', ' ')
         game = re.sub('(---)', '', game)
         game = re.sub('(?!.{20})\.', '', game)
-        game = game.replace(' ', '-').replace('【for-ps-plus】', '').replace('&', "and").replace('fishing-and-ps5', 'fishing-2022').replace('-playstation4-edition', '').replace('-definitive-edition','').replace('-and-ps5', '')
-        game = game.replace(' ', '-').replace('-classic', '').replace('-standard', '').replace('0hd', '0').replace('-(standard-version)', '').replace('-digital-edition','').replace('ö','o').replace('-edition-edition','').replace('-complete-season', '')
+        game = game.replace(' ', '-').replace('【for-ps-plus】', '').replace('&', "and").replace('fishing', 'fishing-2022').replace('-playstation4-edition', '').replace('-definitive-edition','').replace('-and-ps5', '')
+        game = game.replace(' ', '-').replace('-classic', '').replace('-standard', '').replace('0-hd', '0').replace('-(standard-version)', '').replace('-digital-edition','').replace('ö','o').replace('-edition-edition','').replace('-complete-season', '')
         game = re.sub('(-)\Z', '', game)
 
 
@@ -42,6 +42,20 @@ def create_names(games):
             continue
         elif 'nier' in game:
             names.append('nier-replicant-ver122474487139…')
+        elif game == 'get-even':
+            names.append('get-even-2015')
+        elif game == 'i-am-bread':
+            names.append('i-am-bread-tv')
+        elif 'sundered' in game:
+            names.append('sundered')
+        elif 'jotun' in game:
+            names.append('jotun')
+        elif 'mudrunner' in game:
+            names.append('spintires-mudrunner')
+        elif 'spiritfarer' in game:
+            names.append('spiritfarer')
+        elif 'space-hulk' in game:
+            names.append('space-hulk-deathwing')
         elif game == 'tiny-tinas-wonderlands-next-level-edition':
             continue
         elif game == 'story-of-seasons-pioneers-of-olive-town-+-expansion-pass-set':
@@ -52,6 +66,12 @@ def create_names(games):
             continue
         elif game == 'dragon-quest-heroes-ii-digital-explorers-edition':
             continue
+        elif game == 'spongebob-squarepants-battle-for-bikini-bottom-rehydrated':
+            names.append('spongebob-squarepants-battle-for-bikini-bottom-2')
+        elif game == 'star-ocean-iaf':
+            names.append('star-ocean-integrity-and-faithlessness')
+        elif game == 'zombi':
+            names.append('zombiu')
         elif game == "assassins-creed-4-black-flag":
             names.append("assassins-creed-iv-black-flag")
         elif game == "back-4-blood-standard":
