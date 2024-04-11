@@ -14,10 +14,16 @@ def get_info(names):
     list_of_developers = []
     list_of_publishers = []
 
-    for name in names:
+    for name in names[:4]:
         print(name)
         url = f'https://internal-prod.apigee.fandom.net/v1/xapi/composer/metacritic/pages/games-critic-reviews/{name}/platform/pc/web?filter=all&sort=score&apiKey=1MOZgmNFxvmljaQR1X9KAij9Mo4xAY3u'
-        info = requests.get(url)
+        try:
+            info = requests.get(url)
+        except:
+            for i in (list_of_games, list_of_scores, list_of_reviews, list_of_dates, list_of_developers, list_of_publishers):
+                i.append('-')
+
+
         print(info)
 
         # Looking for the game's name using Regex
