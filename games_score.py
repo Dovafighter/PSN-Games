@@ -13,12 +13,14 @@ def create_names(games):
         game = re.sub('(?!.{20})\.', '', game)
         game = game.replace(' ', '-').replace('【for-ps-plus】', '').replace('&', "and").replace('fishing', 'fishing-2022').replace('-playstation4-edition', '').replace('-definitive-edition','').replace('-and-ps5', '')
         game = game.replace(' ', '-').replace('-classic', '').replace('-standard', '').replace('0-hd', '0').replace('-(standard-version)', '').replace('-digital-edition','').replace('ö','o').replace('-edition-edition','').replace('-complete-season', '')
-        game = re.sub('(-)\Z', '', game)
+        game = re.sub('(-\Z)', '', game)
 
 
         # Conditionals for problematic names
         if game == 'absolver-downfall':
             names.append('absolver')
+        elif game == 'dandara-trials-of-fear-edition':
+            names.append('dandara')
         elif 'kingdom-hearts' in game:
             game = game.replace('.', '').replace('1', 'i').replace('plus-25', 'plus-ii5')
             names.append(game)
@@ -41,7 +43,7 @@ def create_names(games):
         elif game == 'tennis-world-tour-2-complete-edition':
             continue
         elif 'nier' in game:
-            names.append('nier-replicant-ver122474487139…')
+            names.append('nier-replicant-ver122474487139')
         elif game == 'get-even':
             names.append('get-even-2015')
         elif game == 'i-am-bread':

@@ -42,7 +42,7 @@ def get_games():
                   .replace('-playstation4-edition', '')
                   .replace('-definitive-edition','')
                   .replace('-edition', '')
-                  .replace('-and-ps5', '')
+                  .replace(' -and-ps5', '')
                   .replace('-playstation4','')
                   .replace('™ ', '-')
                   .replace('™', '-')

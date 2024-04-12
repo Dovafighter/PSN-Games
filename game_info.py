@@ -14,34 +14,30 @@ def get_info(names):
     list_of_developers = []
     list_of_publishers = []
 
-    for name in names:
+    for name in names[35:]:
         print(name)
         url = f'https://internal-prod.apigee.fandom.net/v1/xapi/composer/metacritic/pages/games-critic-reviews/{name}/platform/pc/web?filter=all&sort=score&apiKey=1MOZgmNFxvmljaQR1X9KAij9Mo4xAY3u'
-        try:
-            info = requests.get(url)
-        except:
-            for i in (list_of_games, list_of_scores, list_of_reviews, list_of_dates, list_of_developers, list_of_publishers):
-                i.append('-')
-            continue
+        url = url.replace('-/', '/')
+        info = requests.get(url)
 
 
         print(info)
 
         # Looking for the game's name using Regex
         game_name = re.search('"title":"(.*?)",', info.text)
-        print(name)
-        try:
-            game_name = game_name.group(1)
-            list_of_games.append(game_name)
-        except:
-            list_of_games.append('-')
-        
-        if game_name == 'undefined':
+        game_name = game_name.group(1)
+        if game_name == 'undefined critic reviews':
+            print(game_name)
             list_of_games.append(name)
-            for i in (list_of_scores, list_of_reviews, list_of_dates, list_of_developers, list_of_publishers):
-                i.append('-')
+            list_of_scores.append('-')
+            list_of_reviews.append('-')
+            list_of_dates.append('-')
+            list_of_developers.append('-')
+            list_of_publishers.append('-')
             continue
-
+        else:
+            list_of_games.append(game_name)
+        
 
         # Looking for the game's score using Regex
         score = re.search('((?<=score".)..)', info.text)
@@ -89,7 +85,7 @@ def get_info(names):
         except:
             list_of_publishers.append('-')
 
-        print(game_name, game_score, game_reviews, game_release, game_developer, game_publisher, '\n')
+        print(game_name, "|",game_score, "|", game_reviews, "|", game_release, game_developer, game_publisher, '\n')
 
     print(list_of_games, list_of_scores, list_of_dates, list_of_developers, list_of_publishers)
 
