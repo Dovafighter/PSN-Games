@@ -14,7 +14,7 @@ def get_info(names):
     list_of_developers = []
     list_of_publishers = []
 
-    for name in names[35:]:
+    for name in names:
         print(name)
         url = f'https://internal-prod.apigee.fandom.net/v1/xapi/composer/metacritic/pages/games-critic-reviews/{name}/platform/pc/web?filter=all&sort=score&apiKey=1MOZgmNFxvmljaQR1X9KAij9Mo4xAY3u'
         url = url.replace('-/', '/')
