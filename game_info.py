@@ -14,20 +14,20 @@ def get_info(names):
     list_of_developers = []
     list_of_publishers = []
 
-    for name in names:
+    for name in names[:2]:
         print(name)
         url = f'https://internal-prod.apigee.fandom.net/v1/xapi/composer/metacritic/pages/games-critic-reviews/{name}/platform/pc/web?filter=all&sort=score&apiKey=1MOZgmNFxvmljaQR1X9KAij9Mo4xAY3u'
-        url = url.replace('-/', '/')
+        url = url.replace('-/', '/').replace('--','-')
         info = requests.get(url)
 
 
         print(info)
 
         # Looking for the game's name using Regex
-        game_name = re.search('"title":"(.*?)",', info.text)
-        game_name = game_name.group(1)
-        if game_name == 'undefined critic reviews':
-            print(game_name)
+        game_name = re.search('"type":"game-title","typeId":13,"title":"(.*?)",', info.text)
+        try:
+            game_name = game_name.group(1)
+        except:
             list_of_games.append(name)
             list_of_scores.append('-')
             list_of_reviews.append('-')
@@ -36,7 +36,17 @@ def get_info(names):
             list_of_publishers.append('-')
             continue
         else:
-            list_of_games.append(game_name)
+            if game_name == 'undefined critic reviews':
+                print(game_name)
+                list_of_games.append(name)
+                list_of_scores.append('-')
+                list_of_reviews.append('-')
+                list_of_dates.append('-')
+                list_of_developers.append('-')
+                list_of_publishers.append('-')
+                continue
+            else:
+                list_of_games.append(game_name)
         
 
         # Looking for the game's score using Regex
@@ -87,6 +97,11 @@ def get_info(names):
 
         print(game_name, "|",game_score, "|", game_reviews, "|", game_release, game_developer, game_publisher, '\n')
 
-    print(list_of_games, list_of_scores, list_of_dates, list_of_developers, list_of_publishers)
+    print(list_of_games, list_of_scores, list_of_reviews, list_of_dates, list_of_developers, list_of_publishers)
+
+    return list_of_games, list_of_scores, list_of_reviews, list_of_dates, list_of_developers, list_of_publishers
 
 information = get_info(create_names(get_games()))
+
+print(information)
+print(information[0])
