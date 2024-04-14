@@ -52,5 +52,3 @@ def get_games():
                   .replace('...', '') for game in games_html]
     games_list = sorted(set(games_list))
     return(games_list)
-
-print(get_games())
