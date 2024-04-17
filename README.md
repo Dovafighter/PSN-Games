@@ -20,5 +20,5 @@ I separated every step of this process into a separate file with its own functio
 Yes. While this solution gets the correct information for most of the games (more than 400), I do have to manually fix some of the entries if the name inserted into the API's link is incorrect. This happens for around 20 games. Not a fully automated solution, but it's better than manually going through around 460 games. :D
 
 ## Google Looker
-<iframe width="600" height="450" src="https://lookerstudio.google.com/embed/reporting/7259ffcc-2483-44d7-8e1b-80ed88706f49/page/t3BxD" frameborder="0" style="border:0" allowfullscreen sandbox="allow-storage-access-by-user-activation allow-scripts allow-same-origin allow-popups allow-popups-to-escape-sandbox"></iframe>
+https://lookerstudio.google.com/embed/reporting/7259ffcc-2483-44d7-8e1b-80ed88706f49/page/t3BxD
 
